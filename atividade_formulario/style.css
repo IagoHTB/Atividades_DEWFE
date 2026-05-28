@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: rgb(244, 244, 244);
+}
+
+fieldset {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: white;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+#enviar {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#limpar {
+    background-color: #eef436;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-top: 8px;
+}
+
+fieldset p {
+    font-weight: bold;
+}
+
+#resultado {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer nav {
+    display: inline-block;
+    margin-top: 10px;
+    word-spacing: 100px;
+}
+
+footer a {
+    text-decoration: none;
+}
+img:hover {
+    transform: scale(2);
+    transition: 300ms;
+}

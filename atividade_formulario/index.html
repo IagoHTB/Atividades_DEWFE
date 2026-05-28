@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário Completo</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Cadastro</h1>
+    </header>
+
+    <main>
+
+        <section>
+            <p>O formulario de cadastro deve ser desenvolvido aqui</p>
+
+            <form id="formCadastro">
+
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+
+                    <p>Este é um formulário de fieldset.</p>
+                    <p>Nome completo:</p>
+                    <input type="text" id="nome" name="nome" required minlength="3" placeholder="Seu nome">
+
+                    <p>Data de nascimento:</p>
+                    <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+                </fieldset>
+                <fieldset>
+                    <legend>Informações</legend>
+
+                    <p>Gênero:</p>
+                    <input type="radio" id="masculino" name="genero" value="masculino" required>
+                    <label for="masculino">Masculino</label>
+                    <input type="radio" id="feminino" name="genero" value="feminino">
+                    <label for="feminino">Feminino</label>
+                    <input type="radio" id="outro" name="genero" value="outro">
+                    <label for="outro">Outro</label>
+                </fieldset>
+                <fieldset>
+                    <legend></legend>
+
+                    <p>Interesses:</p>
+                    <input type="checkbox" id="tecnologia" name="interesses" value="tecnologia">
+                    <label for="tecnologia">Tecnologia</label>
+                    <input type="checkbox" id="esportes" name="interesses" value="esportes">
+                    <label for="esportes">Esportes</label>
+                    <input type="checkbox" id="musica" name="interesses" value="musica">
+                    <label for="musica">Música</label>
+                    <input type="checkbox" id="jogos" name="interesses" value="jogos">
+                    <label for="jogos">Jogos</label>
+                </fieldset>
+                <fieldset>
+                    <legend></legend>
+                    <p>Estado:</p>
+                    <select id="estado" name="estado" required>
+                        <option value="">Selecione um estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </fieldset>
+
+                    <p>Mensagem:</p>
+                    <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea>
+
+                    <p>Enviar imagem</p>
+                    <input type="file" id="imagem" name="imagem" accept="image/*">
+
+
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpar</button>
+
+            <h2 id="sec-resultado">Resultado</h2>
+            <div id="resultado"></div>
+        </section>
+
+    </main> 
+
+    <footer>
+
+        <p>&copy; 2026 - Formulário Turma 01 ADS</p>
+
+        <nav aria-label="Documentações">
+            <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                    alt="Documentação HTML" width="40">
+            </a>
+
+            <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                    alt="Documentação CSS" width="40">
+            </a>
+
+            <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    alt="Documentação JavaScript" width="40">
+            </a>
+        </nav>
+
+    </footer>
+
+</body>
+
+</html>

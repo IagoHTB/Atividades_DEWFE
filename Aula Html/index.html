@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Controle de Salas — SENAI Bauru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div id="loader" class="loader">
+      <div class="loader-inner">
+        <div class="logo">SENAI BAURU</div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <!-- SVG sprite: icons and logo (inline for portability) -->
+    <svg style="display:none" aria-hidden="true">
+      <symbol id="icon-logo" viewBox="0 0 24 24">
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#C8102E" />
+        <circle cx="12" cy="12" r="4" fill="#fff" />
+      </symbol>
+      <symbol id="icon-room" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" fill="currentColor" />
+      </symbol>
+      <symbol id="icon-reserve" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="6" rx="1" fill="currentColor" />
+        <rect x="3" y="12" width="6" height="8" rx="1" fill="currentColor" />
+      </symbol>
+      <symbol id="icon-export" viewBox="0 0 24 24">
+        <path d="M12 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 7l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="3" y="15" width="18" height="6" rx="1" fill="currentColor" />
+      </symbol>
+      <symbol id="icon-import" viewBox="0 0 24 24">
+        <path d="M12 21V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 17l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="3" y="3" width="18" height="8" rx="1" fill="currentColor" />
+      </symbol>
+      <symbol id="icon-edit" viewBox="0 0 24 24">
+        <path d="M3 21v-3l11-11 3 3L6 21H3z" fill="currentColor"/>
+      </symbol>
+      <symbol id="icon-delete" viewBox="0 0 24 24">
+        <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 6v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 11v6M14 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </symbol>
+    </svg>
+
+    <nav class="side-nav" aria-label="Navegação principal">
+      <div class="nav-top">
+        <div class="nav-logo"><svg class="icon" aria-hidden><use href="#icon-logo"></use></svg></div>
+        <div class="nav-campus">Bauru</div>
+      </div>
+      <ul class="nav-list">
+        <li class="nav-item active">Dashboard</li>
+        <li class="nav-item">Salas</li>
+        <li class="nav-item">Reservas</li>
+        <li class="nav-item">Relatórios</li>
+        <li class="nav-item">Configurações</li>
+      </ul>
+      <div class="nav-footer muted">v1.0 • offline</div>
+    </nav>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">Controle de Salas — SENAI Bauru</div>
+        <div class="top-actions">
+          <input id="searchInput" placeholder="Pesquisar sala, prédio ou recurso..." />
+          <button id="addRoomBtn" class="btn primary">+ Nova Sala</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar">
+          <div class="filter-group">
+            <label>Filtro: Capacidade</label>
+            <select id="capacityFilter">
+              <option value="">Todas</option>
+              <option value="10"><= 10</option>
+              <option value="30"><= 30</option>
+              <option value="100">> 30</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Prédio</label>
+            <select id="buildingFilter">
+              <option value="">Todos</option>
+            </select>
+          </div>
+          <div class="help">
+            <strong>Dicas:</strong>
+            <ul>
+              <li>Clique em uma sala para ver / reservar.</li>
+              <li>O sistema evita conflitos automaticamente.</li>
+            </ul>
+          </div>
+        </aside>
+
+        <section class="content">
+          <div id="roomsGrid" class="grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Quick floating menu -->
+    <div class="quick-menu" role="navigation" aria-label="Menu rápido">
+      <button class="qm-btn" data-action="export" title="Exportar JSON"><svg class="icon small"><use href="#icon-export"></use></svg></button>
+      <button class="qm-btn" data-action="import" title="Importar JSON"><svg class="icon small"><use href="#icon-import"></use></svg></button>
+      <button class="qm-btn" data-action="fullscreen" title="Tela cheia"><svg class="icon small"><use href="#icon-room"></use></svg></button>
+    </div>
+
+    <input id="importFile" type="file" accept="application/json" style="display:none" />
+
+    <!-- Room detail panel (slide in) -->
+    <aside id="roomPanel" class="room-panel hidden" aria-hidden="true">
+      <div class="room-panel-head">
+        <div class="room-title"><svg class="icon"><use href="#icon-room"></use></svg> <span id="panelRoomName">Sala</span></div>
+        <button id="closePanel" class="icon-btn" aria-label="Fechar"><svg class="icon"><use href="#icon-close"></use></svg></button>
+      </div>
+      <div class="room-panel-body">
+        <div class="panel-meta muted" id="panelRoomMeta"></div>
+        <p id="panelRoomResources" class="muted"></p>
+        <div class="panel-actions">
+          <button id="panelEditRoom" class="btn">Editar</button>
+          <button id="panelDeleteRoom" class="btn" style="background:transparent;color:var(--danger)">Excluir</button>
+        </div>
+
+        <hr />
+        <h4>Reservas</h4>
+        <ul id="panelReservations" class="list"></ul>
+      </div>
+    </aside>
+
+    <!-- Room Modal -->
+    <div id="roomModal" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="roomModalTitle">Nova Sala</h3>
+        <form id="roomForm">
+          <label>Nome <input id="roomName" required /></label>
+          <label>Prédio <input id="roomBuilding" required /></label>
+          <label>Capacidade <input id="roomCapacity" type="number" min="1" required /></label>
+          <label>Recursos <input id="roomResources" placeholder="Ex: Projetor, Ar-condicionado" /></label>
+          <div class="modal-actions">
+            <button type="button" class="btn" id="cancelRoom">Cancelar</button>
+            <button type="submit" class="btn primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Reservation Modal -->
+    <div id="reserveModal" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="reserveTitle">Reservar Sala</h3>
+        <form id="reserveForm">
+          <div id="reserveRoomInfo" class="muted"></div>
+          <label>Data <input id="resDate" type="date" required /></label>
+          <label>Início <input id="resStart" type="time" required /></label>
+          <label>Fim <input id="resEnd" type="time" required /></label>
+          <label>Responsável <input id="resOwner" required /></label>
+          <div class="modal-actions">
+            <button type="button" class="btn" id="cancelReserve">Cancelar</button>
+            <button type="submit" class="btn primary">Reservar</button>
+          </div>
+        </form>
+        <hr />
+        <div>
+          <h4>Reservas Existentes</h4>
+          <ul id="existingReservations" class="list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
