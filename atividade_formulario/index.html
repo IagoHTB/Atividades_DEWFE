@@ -17,7 +17,7 @@
     <main>
 
         <section>
-            <p>O formulario de cadastro deve ser desenvolvido aqui</p>
+            <p>O formulário de cadastro deve ser desenvolvido aqui</p>
 
             <form id="formCadastro">
 
@@ -25,13 +25,17 @@
                     <legend>Dados Pessoais</legend>
 
                     <p>Este é um formulário de fieldset.</p>
-                    <p>Nome completo:</p>
+                    <label for="nome">Nome completo:</label>
                     <input type="text" id="nome" name="nome" required minlength="3" placeholder="Seu nome">
 
-                    <p>Data de nascimento:</p>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+
+                    <label for="dataNascimento">Data de nascimento:</label>
                     <input type="date" id="dataNascimento" name="dataNascimento" required>
 
                 </fieldset>
+
                 <fieldset>
                     <legend>Informações</legend>
 
@@ -43,10 +47,11 @@
                     <input type="radio" id="outro" name="genero" value="outro">
                     <label for="outro">Outro</label>
                 </fieldset>
-                <fieldset>
-                    <legend></legend>
 
-                    <p>Interesses:</p>
+                <fieldset>
+                    <legend>Interesses</legend>
+
+                    <p>Marque seus interesses:</p>
                     <input type="checkbox" id="tecnologia" name="interesses" value="tecnologia">
                     <label for="tecnologia">Tecnologia</label>
                     <input type="checkbox" id="esportes" name="interesses" value="esportes">
@@ -56,9 +61,10 @@
                     <input type="checkbox" id="jogos" name="interesses" value="jogos">
                     <label for="jogos">Jogos</label>
                 </fieldset>
+
                 <fieldset>
-                    <legend></legend>
-                    <p>Estado:</p>
+                    <legend>Localização</legend>
+                    <label for="estado">Estado:</label>
                     <select id="estado" name="estado" required>
                         <option value="">Selecione um estado</option>
                         <option value="AC">Acre</option>
@@ -91,15 +97,18 @@
                     </select>
                 </fieldset>
 
-                    <p>Mensagem:</p>
-                    <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea>
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea>
 
-                    <p>Enviar imagem</p>
-                    <input type="file" id="imagem" name="imagem" accept="image/*">
+                <label for="imagem">Upload de imagem:</label>
+                <input type="file" id="imagem" name="imagem" accept="image/*">
 
-
+                <div class="form-actions">
                     <button type="submit">Enviar</button>
                     <button type="reset">Limpar</button>
+                </div>
+
+            </form>
 
             <h2 id="sec-resultado">Resultado</h2>
             <div id="resultado"></div>

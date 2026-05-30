@@ -1,60 +1,101 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-
 }
-body{
-    background-color: black;
-    color: white;}
-header{
-    background: linear-gradient(to bottom, #002261, #001133);
-    color: rgb(122, 0, 0);
+
+body {
+    min-height: 100vh;
+    background: #000;
+    color: #fff;
+}
+header {
     display: flex;
-    padding: 15px;
+    flex-wrap: wrap;
     align-items: center;
-
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px;
+    background: linear-gradient(to bottom, #002261, #001133);
+    color: #7a0000;
 }
-header img{
+
+header img {
     width: 50px;
     height: 50px;
-    margin-right: 20px;
-    padding: 10px;
 }
-nav ul{
+
+header h1 {
+    font-size: 1.4rem;
+    margin: 0;
+    flex: 1;
+    min-width: 180px;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     list-style: none;
-    display: flex;
-    gap: 15px;
-    margin-left: 80pc;
+    margin: 0;
+    padding: 0;
 }
-nav ul li a{
+
+nav a {
     text-decoration: none;
-    color: rgb(122, 0, 0);
-    font-weight: bold;
-    font-size: 18px;
-
+    color: #7a0000;
+    font-weight: 700;
+    font-size: 1rem;
 }
-.container{
+
+.container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
-.container p{
-    margin: 20px;
-    font-size: 18px;
-    width: 80%;
-    text-align: center;
 
+.container p {
+    width: 100%;
+    max-width: 860px;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
 }
-img{
+
+img {
     animation: hover 5s linear infinite;
 }
-  
-img:hover{
-        animation-play-state: paused;
-    }
+
+img:hover {
+    animation-play-state: paused;
+}
 
 @keyframes hover {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(1024deg); }
+    from { transform: rotate(0); }
+    to { transform: rotate(1024deg); }
+}
+
+@media (max-width: 640px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    header h1 {
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    .container p {
+        font-size: 0.95rem;
+    }
 }
