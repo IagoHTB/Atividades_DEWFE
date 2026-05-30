@@ -5,18 +5,22 @@
     <meta name="author" content="Felipe Barbosa">
     <meta name="description" content="Exemplo de listas em HTML">
     <meta name="keywords" content="HTML, listas, ordenada, não ordenada, descrição">
-    <meta name="viewport" content="width=device-width", initial-scale=1.0>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <nav>
-        <a href="#listatd">Listas</a>
-        <a href="tabelas">Tabelas</a>
+        <a href="#ordenada">Lista Ordenada</a>
+        <a href="#nao-ordenada">Lista Não Ordenada</a>
+        <a href="#tipos-ordenadas">Tipos ordenados</a>
+        <a href="#tipos-nao-ordenadas">Tipos não ordenados</a>
+        <a href="#descricao">Lista de Descrição</a>
     </nav>
 
-   <h1 id="listatd">Listas</h1>
-   <h2>Lista Ordenada</h2>
+   <h1>Listas</h1>
+   <section id="ordenada">
+       <h2>Lista Ordenada</h2>
 
-   <ol>
+       <ol>
     <li>Abacaxi</li>
     <li>Limão</li>
     <li>Laranja
@@ -26,12 +30,10 @@
         </ol>
     </li>
    </ol>
+   </section>
 
-   <!-- Isso é feio, nunca use... Vamos aprender o jeito certo de pular linhas com CSS -->
-   <br><br><br><br><br><br><br><br><br><br>
-   
-
-   <h2>Lista Não Ordenada</h2>
+   <section id="nao-ordenada">
+       <h2>Lista Não Ordenada</h2>
    <ul>
     <li>Abacaxi</li>
     <li>Limão</li>
@@ -42,10 +44,10 @@
         </ul>
     </li>
    </ul>
+   </section>
 
-   <br><br><br><br><br><br><br><br><br><br>
-
-   <h2>Diferentes tipos de listas ordenadas</h2>
+   <section id="tipos-ordenadas">
+       <h2>Diferentes tipos de listas ordenadas</h2>
    <ol type="A">
     <li>Morango</li>
     <li>Maçã
@@ -56,10 +58,10 @@
     </li>
     <li>Cereja</li>
    </ol>
+   </section>
 
-   <br><br><br><br><br><br><br><br><br><br>
-
-   <h2>Diferentes tipos de listas não ordenadas</h2>
+   <section id="tipos-nao-ordenadas">
+       <h2>Diferentes tipos de listas não ordenadas</h2>
    <ul type="circle">
     <li>Morango</li>
     <li>Maçã
@@ -70,18 +72,19 @@
     </li>
     <li>Cereja</li>
    </ul>
+   </section>
 
-   <br><br><br><br><br><br><br><br><br><br>
-   
-   <h2>Lista de Descrição</h2>
+   <section id="descricao">
+       <h2>Lista de Descrição</h2>
    <dl>
     <dt>Abacaxi</dt>
         <dd>Fruta ácida de tom amarelado e casca dura.</dd>
     <dt>Limão</dt>
         <dd>Fruta ácida e azeda de tom verde.</dd>
     <dt>Laranja</dt>
-        <dd>Fruta ácida de cor laranja e doce.</dd>  
+        <dd>Fruta ácida de cor laranja e doce.</dd>
    </dl>
+   </section>
 
 </body>
 </html>
