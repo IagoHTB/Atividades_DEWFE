@@ -1,300 +1,380 @@
-/* Reset básico e caixa de dimensionamento */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Definicao de variaveis em escopo global */
+:root {
+  --altura-header: 20vh; /*define altura-header como 20% da viewport*/
+  --altura-article: 30vh; /*define altura-article como 30% da viewport*/
+  --primary: #f4b13f; /* cor primaria (laranja) */
+  --dark: #2c2a2a; /* cor de texto escura */
+  --card-bg: #ffffff; /* fundo branco para os cards */
 }
 
-:root {
-    --altura-header: 20vh;
-    --altura-article: 30vh;
-    --primary: #f4b13f; /* laranja/dourado */
-    --muted: #f5efe6;
-    --dark: #2c2a2a;
-    --card-bg: #ffffff;
+/* Reset básico (remove espaçamentos e padroniza box model) */
+* {
+  margin: 0; /* remove margem padrão dos elementos */
+  padding: 0; /* remove padding padrão */
+  box-sizing: border-box; /* inclui border/padding no cálculo de dimensões */
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #eee;
-    color: var(--dark);
-    line-height: 1.6;
+  background-color: #eee; /* cor de fundo da área visível */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* garante que o body ocupe toda a altura da tela */
 }
 
+/* 7. Gradiente de Cores implementado no cabeçalho */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    height: var(--altura-header);
-    background: linear-gradient(90deg, #e9e7d8, #e9e7d8 60%, var(--primary));
+  width: 100%; /* ocupa 100% da largura do elemento pai*/
+  height: var(--altura-header); /* 20% da altura da viewport/janela */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #e9e7d8, #e9e7d8 60%, orange);
 }
 
 #logo {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  height: 100%;
 }
 
+/* 7. Tamanho Relativo e Preservando aspect-ratio */
 #logo-img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid #d9c4a4;
-    transition: transform 1s ease;
+  height: 80%; /* ocupa 80% da altura da div pai (#logo) */
+  width: auto; /* mantém proporção (aspect ratio) automaticamente */
+  object-fit: cover;
+  border-radius: 12px; /* 8. Elementos apresentam bordas arredondadas */
+  border: 1px solid #d9c4a4;
+  transition: transform 1s ease; /* animação suave para hover */
+}
+
+/* 3. Pseudo-classe :hover para rotacionar o logo-img em 360 graus */
+#logo-img:hover {
+  transform: rotate(360deg); /* rotaciona elemento 360 graus */
 }
 
 #logo h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: #2c2a2a;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c2a2a;
 }
 
 nav ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
 }
 
 nav a {
-    color: #5d544d;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.98rem;
-    transition: transform 0.5s ease, color 0.2s ease;
-    display: inline-block;
+  color: #5d544d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.5s ease, color 0.2s ease; /* animação suave */
 }
 
-nav a:hover,
-nav a:focus-visible {
-    color: #e07a1d;
-    transform: scale(1.5);
+/* 3. Pseudo-classe :hover para aumentar tamanho dos links do menu */
+nav a:hover {
+  color: #e07a1d;
+  transform: scale(1.5); /* aumenta o link ao passar o mouse */
 }
 
+/* 4. Centralização: horizontal e vertical na main */
 main {
-    max-width: 1100px;
-    margin: 2rem auto 3rem;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* centraliza conteúdo conforme requisito */
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* itens como coluna no centro da tela */
+  max-width: 1100px;
+  width: 100%;
+  margin: 2rem auto 3rem;
+  padding: 0 1.5rem;
+  gap: 2rem;
+  flex-grow: 1; /* faz a main ocupar o espaco restante */
+}
+
+/* 6. A largura das seções se ajusta à largura da tela */
+#header-main,
+#proximos-eventos,
+main section {
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--card-bg);
+  padding: 2.5rem 2rem;
+  border-radius: 18px; /* 8. Elementos apresentam bordas arredondadas */
+  border: 1px solid #dfd2b0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 #header-main {
-    width: 90%;
-    background-color: var(--card-bg);
-    padding: 2.5rem 2rem;
-    border-radius: 18px;
-    border: 1px solid #dfd2b0;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    text-align: center;
+  text-align: center;
 }
 
 #header-main h2 {
-    font-size: 2.6rem;
-    color: #2c2a2a;
-    margin-bottom: 0.6rem;
+  font-size: 2.5rem;
+  color: #16213e;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 #header-main p {
-    max-width: 760px;
-    margin: 0 auto;
-    color: #5d544d;
-    font-size: 1rem;
+  max-width: 760px;
+  margin: 0 auto;
+  color: #5d544d;
+  font-size: 1.1rem;
+  font-style: italic;
 }
 
-#proximos-eventos {
-    width: 90%;
-    margin-top: 2rem;
-}
-
+/* Próximos Eventos */
 #proximos-eventos h3 {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 0.35rem;
-    text-align: center;
-    text-shadow: 0 2px 0 rgba(0,0,0,0.05);
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.05);
 }
 
-#proximos-eventos p {
-    color: #5d544d;
-    margin-bottom: 1.6rem;
-    text-align: center;
+#proximos-eventos > p {
+  color: #5d544d;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
+/* Artigos sobre os próximos eventos (.evento) */
 .evento {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    background-color: var(--card-bg);
-    border: 2px solid #f0e6d7;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: 2px solid #f0e6d7;
+  border-radius: 8px; /* 8. Elementos apresentam bordas arredondadas */
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* animação suave para hover */
 }
 
 .evento img {
-    width: 240px;
-    height: 180px;
-    object-fit: cover;
-    flex-shrink: 0;
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px; /* 8. Elementos apresentam bordas arredondadas */
+  flex-shrink: 0;
 }
 
 .dados-evento {
-    padding: 1.4rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dados-evento h4 {
-    font-size: 1.35rem;
-    margin-bottom: 0.85rem;
-    color: #2c2a2a;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c2a2a;
+  margin-bottom: 0.4rem;
+  transition: color 0.3s ease;
 }
 
 .dados-evento p {
-    margin: 0.25rem 0;
-    color: #5d544d;
-    font-size: 0.98rem;
+  font-size: 1rem;
+  color: #5d544d;
+  margin: 0.15rem 0;
+  transition: color 0.3s ease;
 }
 
 .dados-evento .data,
 .dados-evento .local {
-    font-weight: 600;
+  font-weight: 600;
 }
 
-/* Hover effect for events: change background/text, lift and add shadow */
+/* 3. Pseudo-classe :hover para os artigos sobre os próximos eventos (.evento) */
 .evento:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    background-color: #fff7ec;
-    border-color: var(--primary);
-    color: #111;
+  transform: translateY(-5px); /* leve elevação ao passar o mouse */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* sombra */
+  background-color: #fca130; /* muda cor de fundo para laranja no hover */
+  border-color: #fca130;
+  color: #fff; /* muda cor do texto para branco no hover */
 }
 
-.evento:hover .dados-evento h4 {
-    color: #111;
+/* Força que os textos internos da classe evento fiquem brancos no hover */
+.evento:hover .dados-evento h4,
+.evento:hover .dados-evento p {
+  color: #fff;
 }
 
-/* Logo rotation on hover */
-#logo-img:hover {
-    transform: rotate(360deg);
+/* Estilização para as seções das páginas Contato e Cadastro */
+main section h2 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.05);
 }
 
+/* Seção de Informações de Contato */
+main section:first-of-type p {
+  text-align: center;
+  margin: 0.75rem 0;
+  font-size: 1.1rem;
+}
+
+/* Formulários */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form label {
+  font-weight: 600;
+  color: #5d544d;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="date"],
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d0cbbf;
+  border-radius: 6px; /* 8. Elementos apresentam bordas arredondadas */
+  font-size: 1rem;
+  background-color: #fff;
+  color: var(--dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 9. Pseudo-classe :focus para alterar cor de borda dos elementos do formulário ao clicar */
+form input:focus,
+form textarea:focus {
+  outline: none; /* desabilita contorno padrão */
+  border-color: orange; /* define cor da borda ao focar */
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); /* sombra */
+}
+
+/* Checkbox no formulário de Cadastro */
+form label:not([for]) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+form input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+/* Botões do Formulário */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px; /* 8. Elementos apresentam bordas arredondadas */
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #1a252f;
+  color: #fff;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+/* 3. Pseudo-classe :hover para botões submit e reset */
+button[type="submit"]:hover {
+  background-color: yellowgreen; /* Enviar / Cadastrar fica verde */
+  transform: scale(1.01); /* aumenta de tamanho */
+}
+
+button[type="reset"]:hover {
+  background-color: orange; /* Limpar fica laranja */
+  transform: scale(1.01); /* aumenta de tamanho */
+}
+
+/* Footer (Rodapé) */
 footer {
+  background-color: #1a252f;
+  color: #fff;
+  text-align: center; /* 5. Centralização de texto em elemento */
+  padding: 1.5rem 1rem; /* 5. Espaçamento: padding */
+  margin-top: auto; /* Garante que o footer fique no final da página */
+}
+
+footer p {
+  font-size: 0.95rem;
+}
+
+/* Responsividade (Media Queries) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    background: linear-gradient(180deg, #e9e7d8, #e9e7d8 60%, orange);
+  }
+
+  #logo {
+    flex-direction: column;
     text-align: center;
-    padding: 1rem 1rem;
-    background-color: #fff5df;
-    color: #5d544d;
-    border-top: 1px solid #e5d9c1;
+    gap: 0.5rem;
+  }
+
+  #logo-img {
+    height: 60px;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  #header-main h2 {
+    font-size: 2rem;
+  }
+
+  #header-main,
+  #proximos-eventos,
+  main section {
+    padding: 1.5rem 1rem;
+  }
 }
 
-footer {
+@media (max-width: 600px) {
+  .evento {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 1rem 1rem;
-    background-color: #333;
-    color: #fff;
-    border-top: 1px solid #222;
-}
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-    }
+  }
 
-    #logo {
-        justify-content: center;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 720px) {
-    #header-main {
-        padding: 1.8rem 1rem;
-    }
-
-    #header-main h2 {
-        font-size: 2rem;
-    }
-
-    .evento {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .evento img {
-        width: 100%;
-        height: auto;
-    }
-
-    .dados-evento {
-        padding: 1rem;
-    }
-}
-
-/* Form controls: focus and button hover behaviors */
-input, textarea, select {
-    border: 1px solid #d0cbbf;
-    padding: 0.5rem;
-    border-radius: 6px;
-}
-
-input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 6px rgba(244,177,63,0.35);
-}
-
-button, input[type="submit"], input[type="reset"] {
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-button[type="submit"], input[type="submit"] {
-    background-color: #222;
-    color: #fff;
-}
-
-button[type="submit"]:hover, input[type="submit"]:hover {
-    background-color: yellowgreen;
-    transform: scale(1.01);
-}
-
-button[type="reset"], input[type="reset"] {
-    background-color: #222;
-    color: #fff;
-}
-
-button[type="reset"]:hover, input[type="reset"]:hover {
-    background-color: orange;
-    transform: scale(1.01);
-}
-
-/* Ensure sections adjust to screen width */
-#header-main, #proximos-eventos {
-    max-width: 1100px;
+  .evento img {
     width: 100%;
-}
+    height: 180px;
+    border-radius: 6px 6px 0 0;
+  }
 
-/* small visual tweaks for headings to match reference */
-#header-main h2 {
-    color: #16213e;
-    font-weight: 800;
-    text-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  .dados-evento {
+    padding: 0.5rem 0;
+  }
 }
-
-/* Ensure nav links have good hit area when scaled */
-nav a { transform-origin: center; }
