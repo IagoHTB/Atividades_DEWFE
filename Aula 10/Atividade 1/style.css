@@ -43,11 +43,14 @@ header {
 
 /* 7. Tamanho Relativo e Preservando aspect-ratio */
 #logo-img {
-  height: 80%; /* ocupa 80% da altura da div pai (#logo) */
+  height: 70%; /* ocupa parte da altura da div pai (#logo) */
+  max-height: calc(var(--altura-header) * 0.8);
   width: auto; /* mantém proporção (aspect ratio) automaticamente */
-  object-fit: cover;
-  border-radius: 12px; /* 8. Elementos apresentam bordas arredondadas */
-  border: 1px solid #d9c4a4;
+  object-fit: contain; /* preserva a imagem inteira sem cortes */
+  border-radius: 0; /* remover arredondamento para a logo */
+  border: none; /* remover borda para combinar com o exemplo */
+  display: block;
+  transform-origin: center; /* garante rotação ao redor do centro */
   transition: transform 1s ease; /* animação suave para hover */
 }
 
