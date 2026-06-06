@@ -1,0 +1,372 @@
+:root {
+  --altura-header: 20vh;
+  --altura-article: 30vh;
+  --primary: #f4b13f;
+  --dark: #2c2a2a;
+  --card-bg: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  height: var(--altura-header);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #e9e7d8, #e9e7d8 60%, orange);
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  height: 100%;
+}
+
+#logo-img {
+  height: 70%;
+  max-height: calc(var(--altura-header) * 0.8);
+  width: auto;
+  object-fit: contain;
+  border-radius: 0;
+  border: none;
+  display: block;
+  transform-origin: center;
+  transition: transform 1s ease;
+}
+
+#logo-img:hover {
+  transform: rotate(360deg);
+}
+
+#logo h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c2a2a;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav a {
+  color: #5d544d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.5s ease, color 0.2s ease;
+}
+
+nav a:hover {
+  color: #e07a1d;
+  transform: scale(1.5);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 2rem auto 3rem;
+  padding: 0 1.5rem;
+  gap: 2rem;
+  flex-grow: 1;
+}
+
+#header-main,
+#proximos-eventos,
+main section {
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--card-bg);
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  border: 1px solid #dfd2b0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+#header-main {
+  text-align: center;
+}
+
+#header-main h2 {
+  font-size: 2.5rem;
+  color: #16213e;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#header-main p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #5d544d;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+#proximos-eventos h3 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.05);
+}
+
+#proximos-eventos > p {
+  color: #5d544d;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.evento {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: 2px solid #f0e6d7;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.evento img {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.dados-evento {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dados-evento h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c2a2a;
+  margin-bottom: 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.dados-evento p {
+  font-size: 1rem;
+  color: #5d544d;
+  margin: 0.15rem 0;
+  transition: color 0.3s ease;
+}
+
+.dados-evento .data,
+.dados-evento .local {
+  font-weight: 600;
+}
+
+.evento:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  background-color: #fca130;
+  border-color: #fca130;
+  color: #fff;
+}
+
+.evento:hover .dados-evento h4,
+.evento:hover .dados-evento p {
+  color: #fff;
+}
+
+main section h2 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.05);
+}
+
+main section:first-of-type p {
+  text-align: center;
+  margin: 0.75rem 0;
+  font-size: 1.1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form label {
+  font-weight: 600;
+  color: #5d544d;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="date"],
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d0cbbf;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: var(--dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: orange;
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+}
+
+form label:not([for]) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+form input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #1a252f;
+  color: #fff;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+button[type="submit"]:hover {
+  background-color: yellowgreen;
+  transform: scale(1.01);
+}
+
+button[type="reset"]:hover {
+  background-color: orange;
+  transform: scale(1.01);
+}
+
+input[type="submit"]:hover {
+  background-color: yellowgreen;
+  transform: scale(1.01);
+}
+
+input[type="reset"]:hover {
+  background-color: orange;
+  transform: scale(1.01);
+}
+
+footer {
+  background-color: #1a252f;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: auto;
+}
+
+footer p {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    background: linear-gradient(180deg, #e9e7d8, #e9e7d8 60%, orange);
+  }
+
+  #logo {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  #logo-img {
+    height: 60px;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  #header-main h2 {
+    font-size: 2rem;
+  }
+
+  #header-main,
+  #proximos-eventos,
+  main section {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .evento {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .evento img {
+    width: 100%;
+    height: 180px;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .dados-evento {
+    padding: 0.5rem 0;
+  }
+}

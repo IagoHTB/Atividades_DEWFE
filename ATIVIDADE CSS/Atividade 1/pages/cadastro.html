@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <header>
+        <div id="logo">
+            <a href="../index.html"><img id="logo-img" src="../images/logo.jpg" alt="logo"></a>
+            <h1>Runners Area</h1>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Formulário de Cadastro</h2>
+            <form>
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div>
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+
+                <div>
+                    <label for="confirmar-senha">Confirmar Senha:</label>
+                    <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+                </div>
+
+                <div>
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone">
+                </div>
+
+                <div>
+                    <label for="data-nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data-nascimento" name="data-nascimento">
+                </div>
+
+                <div>
+                    <label>
+                        <input type="checkbox" name="termos" required>
+                        Concordo com os termos e condições
+                    </label>
+                </div>
+
+                <button type="submit">Cadastrar</button>
+                <button type="reset">Limpar</button>
+            </form>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Runners Area. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
