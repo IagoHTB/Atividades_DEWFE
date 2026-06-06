@@ -1,32 +1,29 @@
-/* Definicao de variaveis em escopo global */
 :root {
-  --altura-header: 20vh; /*define altura-header como 20% da viewport*/
-  --altura-article: 30vh; /*define altura-article como 30% da viewport*/
-  --primary: #f4b13f; /* cor primaria (laranja) */
-  --dark: #2c2a2a; /* cor de texto escura */
-  --card-bg: #ffffff; /* fundo branco para os cards */
+  --altura-header: 20vh;
+  --altura-article: 30vh;
+  --primary: #f4b13f;
+  --dark: #2c2a2a;
+  --card-bg: #ffffff;
 }
 
-/* Reset básico (remove espaçamentos e padroniza box model) */
 * {
-  margin: 0; /* remove margem padrão dos elementos */
-  padding: 0; /* remove padding padrão */
-  box-sizing: border-box; /* inclui border/padding no cálculo de dimensões */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #eee; /* cor de fundo da área visível */
+  background-color: #eee;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--dark);
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* garante que o body ocupe toda a altura da tela */
+  min-height: 100vh;
 }
 
-/* 7. Gradiente de Cores implementado no cabeçalho */
 header {
-  width: 100%; /* ocupa 100% da largura do elemento pai*/
-  height: var(--altura-header); /* 20% da altura da viewport/janela */
+  width: 100%;
+  height: var(--altura-header);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,22 +38,20 @@ header {
   height: 100%;
 }
 
-/* 7. Tamanho Relativo e Preservando aspect-ratio */
 #logo-img {
-  height: 70%; /* ocupa parte da altura da div pai (#logo) */
+  height: 70%;
   max-height: calc(var(--altura-header) * 0.8);
-  width: auto; /* mantém proporção (aspect ratio) automaticamente */
-  object-fit: contain; /* preserva a imagem inteira sem cortes */
-  border-radius: 0; /* remover arredondamento para a logo */
-  border: none; /* remover borda para combinar com o exemplo */
+  width: auto;
+  object-fit: contain;
+  border-radius: 0;
+  border: none;
   display: block;
-  transform-origin: center; /* garante rotação ao redor do centro */
-  transition: transform 1s ease; /* animação suave para hover */
+  transform-origin: center;
+  transition: transform 1s ease;
 }
 
-/* 3. Pseudo-classe :hover para rotacionar o logo-img em 360 graus */
 #logo-img:hover {
-  transform: rotate(360deg); /* rotaciona elemento 360 graus */
+  transform: rotate(360deg);
 }
 
 #logo h1 {
@@ -78,29 +73,26 @@ nav a {
   font-size: 1.1rem;
   display: inline-block;
   transform-origin: center;
-  transition: transform 0.5s ease, color 0.2s ease; /* animação suave */
+  transition: transform 0.5s ease, color 0.2s ease;
 }
 
-/* 3. Pseudo-classe :hover para aumentar tamanho dos links do menu */
 nav a:hover {
   color: #e07a1d;
-  transform: scale(1.5); /* aumenta o link ao passar o mouse */
+  transform: scale(1.5);
 }
 
-/* 4. Centralização: horizontal e vertical na main */
 main {
   display: flex;
   flex-direction: column;
-  align-items: center; /* itens como coluna no centro da tela */
+  align-items: center;
   max-width: 1100px;
   width: 100%;
   margin: 2rem auto 3rem;
   padding: 0 1.5rem;
   gap: 2rem;
-  flex-grow: 1; /* faz a main ocupar o espaco restante */
+  flex-grow: 1;
 }
 
-/* 6. A largura das seções se ajusta à largura da tela */
 #header-main,
 #proximos-eventos,
 main section {
@@ -108,7 +100,7 @@ main section {
   max-width: 800px;
   background-color: var(--card-bg);
   padding: 2.5rem 2rem;
-  border-radius: 18px; /* 8. Elementos apresentam bordas arredondadas */
+  border-radius: 18px;
   border: 1px solid #dfd2b0;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
@@ -133,7 +125,6 @@ main section {
   font-style: italic;
 }
 
-/* Próximos Eventos */
 #proximos-eventos h3 {
   font-size: 2.2rem;
   color: var(--primary);
@@ -148,25 +139,24 @@ main section {
   text-align: center;
 }
 
-/* Artigos sobre os próximos eventos (.evento) */
 .evento {
   display: flex;
   gap: 1.5rem;
   align-items: center;
   background-color: var(--card-bg);
   border: 2px solid #f0e6d7;
-  border-radius: 8px; /* 8. Elementos apresentam bordas arredondadas */
+  border-radius: 8px;
   overflow: hidden;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* animação suave para hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .evento img {
   width: 180px;
   height: 120px;
   object-fit: cover;
-  border-radius: 6px; /* 8. Elementos apresentam bordas arredondadas */
+  border-radius: 6px;
   flex-shrink: 0;
 }
 
@@ -196,22 +186,19 @@ main section {
   font-weight: 600;
 }
 
-/* 3. Pseudo-classe :hover para os artigos sobre os próximos eventos (.evento) */
 .evento:hover {
-  transform: translateY(-5px); /* leve elevação ao passar o mouse */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* sombra */
-  background-color: #fca130; /* muda cor de fundo para laranja no hover */
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  background-color: #fca130;
   border-color: #fca130;
-  color: #fff; /* muda cor do texto para branco no hover */
+  color: #fff;
 }
 
-/* Força que os textos internos da classe evento fiquem brancos no hover */
 .evento:hover .dados-evento h4,
 .evento:hover .dados-evento p {
   color: #fff;
 }
 
-/* Estilização para as seções das páginas Contato e Cadastro */
 main section h2 {
   color: var(--primary);
   text-align: center;
@@ -220,14 +207,12 @@ main section h2 {
   text-shadow: 0 2px 0 rgba(0,0,0,0.05);
 }
 
-/* Seção de Informações de Contato */
 main section:first-of-type p {
   text-align: center;
   margin: 0.75rem 0;
   font-size: 1.1rem;
 }
 
-/* Formulários */
 form {
   display: flex;
   flex-direction: column;
@@ -259,22 +244,20 @@ form textarea {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #d0cbbf;
-  border-radius: 6px; /* 8. Elementos apresentam bordas arredondadas */
+  border-radius: 6px;
   font-size: 1rem;
   background-color: #fff;
   color: var(--dark);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 9. Pseudo-classe :focus para alterar cor de borda dos elementos do formulário ao clicar */
 form input:focus,
 form textarea:focus {
-  outline: none; /* desabilita contorno padrão */
-  border-color: orange; /* define cor da borda ao focar */
-  box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); /* sombra */
+  outline: none;
+  border-color: orange;
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
 }
 
-/* Checkbox no formulário de Cadastro */
 form label:not([for]) {
   display: flex;
   flex-direction: row;
@@ -290,11 +273,10 @@ form input[type="checkbox"] {
   cursor: pointer;
 }
 
-/* Botões do Formulário */
 button {
   width: 100%;
   padding: 0.75rem;
-  border-radius: 6px; /* 8. Elementos apresentam bordas arredondadas */
+  border-radius: 6px;
   border: none;
   font-size: 1.1rem;
   font-weight: 600;
@@ -305,18 +287,16 @@ button {
   margin-top: 0.5rem;
 }
 
-/* 3. Pseudo-classe :hover para botões submit e reset */
 button[type="submit"]:hover {
-  background-color: yellowgreen; /* Enviar / Cadastrar fica verde */
-  transform: scale(1.01); /* aumenta de tamanho */
+  background-color: yellowgreen;
+  transform: scale(1.01);
 }
 
 button[type="reset"]:hover {
-  background-color: orange; /* Limpar fica laranja */
-  transform: scale(1.01); /* aumenta de tamanho */
+  background-color: orange;
+  transform: scale(1.01);
 }
 
-/* Suporte também para inputs do tipo submit/reset caso o HTML use input em vez de button */
 input[type="submit"]:hover {
   background-color: yellowgreen;
   transform: scale(1.01);
@@ -327,20 +307,18 @@ input[type="reset"]:hover {
   transform: scale(1.01);
 }
 
-/* Footer (Rodapé) */
 footer {
   background-color: #1a252f;
   color: #fff;
-  text-align: center; /* 5. Centralização de texto em elemento */
-  padding: 1.5rem 1rem; /* 5. Espaçamento: padding */
-  margin-top: auto; /* Garante que o footer fique no final da página */
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: auto;
 }
 
 footer p {
   font-size: 0.95rem;
 }
 
-/* Responsividade (Media Queries) */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
