@@ -313,6 +313,17 @@ button[type="reset"]:hover {
   transform: scale(1.01); /* aumenta de tamanho */
 }
 
+/* Suporte também para inputs do tipo submit/reset caso o HTML use input em vez de button */
+input[type="submit"]:hover {
+  background-color: yellowgreen;
+  transform: scale(1.01);
+}
+
+input[type="reset"]:hover {
+  background-color: orange;
+  transform: scale(1.01);
+}
+
 /* Footer (Rodapé) */
 footer {
   background-color: #1a252f;
