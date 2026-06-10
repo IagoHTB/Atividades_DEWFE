@@ -1,2 +1,0 @@
-# Atividades_DEWFE
-
