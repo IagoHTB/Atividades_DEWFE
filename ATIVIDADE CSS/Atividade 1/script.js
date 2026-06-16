@@ -1,36 +1,81 @@
 
 // um caractere especial, uma letra maiúscula e uma minúscula.
-function validatePassword(password) {
+function validarSenha(senha) {
 	const minLength = 8;
-	if (!password || password.length < minLength) return false;
-	const hasUpper = /[A-Z]/.test(password);
-	const hasLower = /[a-z]/.test(password);
-	const hasNumber = /[0-9]/.test(password);
-	const hasSpecial = /[!@#\$%\^&\*\(\)_\+\-=\[\]{};':"\\|,.<>\/?`~]/.test(password);
+	if (!senha || senha.length < minLength) return false;
+	const hasUpper = /[A-Z]/.test(senha);
+	const hasLower = /[a-z]/.test(senha);
+	const hasNumber = /[0-9]/.test(senha);
+	const hasSpecial = /[!@#\$%\^&\*\(\)_\+\-=\[\]{};':"\\|,.<>\/?`~]/.test(senha);
 	return hasUpper && hasLower && hasNumber && hasSpecial;
 }
 
-// Handler de exemplo para um formulário com id "signupForm" e input "password"
+
 document.addEventListener('DOMContentLoaded', () => {
-	const form = document.getElementById('signupForm');
+	const form = document.getElementById('cadastroForm');
 	if (!form) return;
-	const pwdInput = form.querySelector('input[name="password"]');
-	const errorEl = document.createElement('div');
-	errorEl.style.color = 'red';
-	errorEl.style.marginTop = '8px';
-	form.appendChild(errorEl);
+	const senhaInput = form.querySelector('input[name="senha"]');
+	const confirmarSenhaInput = form.querySelector('input[name="confirmar-senha"]');
+
+	const showError = (input, message) => {
+		clearError(input);
+		if (!input) return;
+		input.classList.add('error-input');
+		const errorEl = document.createElement('div');
+		errorEl.className = 'error-message';
+		errorEl.textContent = message;
+		input.parentNode.appendChild(errorEl);
+	};
+
+	const clearError = (input) => {
+		if (!input) return;
+		input.classList.remove('error-input');
+		const parent = input.parentNode;
+		if (parent) {
+			const existingError = parent.querySelector('.error-message');
+			if (existingError) {
+				existingError.remove();
+			}
+		}
+	};
+
+	if (senhaInput) {
+		senhaInput.addEventListener('input', () => {
+			clearError(senhaInput);
+		});
+	}
+
+	if (confirmarSenhaInput) {
+		confirmarSenhaInput.addEventListener('input', () => {
+			clearError(confirmarSenhaInput);
+		});
+	}
 
 	form.addEventListener('submit', (e) => {
-		const pwd = pwdInput ? pwdInput.value : '';
-		if (!validatePassword(pwd)) {
+		const senha = senhaInput ? senhaInput.value : '';
+		const confirmarSenha = confirmarSenhaInput ? confirmarSenhaInput.value : '';
+
+		// Clear previous errors
+		clearError(senhaInput);
+		clearError(confirmarSenhaInput);
+
+		let hasError = false;
+
+		if (!validarSenha(senha)) {
 			e.preventDefault();
-			errorEl.textContent = 'A senha deve ter ao menos 8 caracteres, incluir número, caractere especial, letra maiúscula e minúscula.';
-			pwdInput.focus();
-		} else {
-			errorEl.textContent = '';
+			showError(senhaInput, 'A senha deve ter ao menos 8 caracteres, incluir número, caractere especial, letra maiúscula e minúscula.');
+			senhaInput.focus();
+			hasError = true;
+		}
+
+		if (!hasError && senha !== confirmarSenha) {
+			e.preventDefault();
+			showError(confirmarSenhaInput, 'As senhas não coincidem.');
+			confirmarSenhaInput.focus();
+			hasError = true;
 		}
 	});
 });
 
-if (typeof module !== 'undefined') module.exports = { validatePassword };
+if (typeof module !== 'undefined') module.exports = { validarSenha };
 

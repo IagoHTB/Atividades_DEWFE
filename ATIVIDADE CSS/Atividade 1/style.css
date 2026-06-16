@@ -370,3 +370,22 @@ footer p {
     padding: 0.5rem 0;
   }
 }
+
+/* Estilos de erro para validação de campos */
+form input.error-input {
+  border-color: #d9534f !important;
+  box-shadow: 0 0 5px rgba(217, 83, 79, 0.5) !important;
+}
+
+form input.error-input:focus {
+  border-color: #d9534f !important;
+  box-shadow: 0 0 5px rgba(217, 83, 79, 0.8) !important;
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+  font-weight: 600;
+  display: block;
+}
