@@ -371,7 +371,7 @@ footer p {
   }
 }
 
-/* Estilos de erro para validação de campos */
+
 form input.error-input {
   border-color: #d9534f !important;
   box-shadow: 0 0 5px rgba(217, 83, 79, 0.5) !important;
